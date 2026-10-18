@@ -1,0 +1,264 @@
+/* ============================================================================
+   tokens.css — PrepSeek design system
+   Pearl White × Soft Charcoal × Brand Gradient
+   ============================================================================ */
+
+:root {
+  /* ── Surfaces ─────────────────────────────────────────────────── */
+  --bg:            #FAF9F5;   /* pearl white — app background       */
+  --bg-sunk:       #F2F1EC;   /* warm sand — sunk surfaces          */
+  --panel:         #FFFFFF;   /* card / sidebar / topbar            */
+  --panel-soft:    #FAF9F5;   /* inset fields                       */
+  --panel-hover:   #F4F3EE;   /* hover tint                         */
+
+  /* ── Ink ──────────────────────────────────────────────────────── */
+  --ink:           #1A1A1A;   /* headings, strong text              */
+  --ink-soft:      #3A3A3E;   /* body text                          */
+  --muted:         #71717A;   /* secondary text, labels             */
+  --muted-soft:    #A1A1AA;   /* tertiary / placeholder             */
+
+  /* ── Lines ────────────────────────────────────────────────────── */
+  --line:          #E6E4DE;   /* default border                     */
+  --line-soft:     #EFEDE8;   /* subtle dividers                    */
+  --line-strong:   #D6D3CC;   /* emphasised border                  */
+
+  /* ── Brand (charcoal) ─────────────────────────────────────────── */
+  --brand:         #2A2A2E;   /* primary button / active state      */
+  --brand-ink:     #FFFFFF;   /* text on brand surfaces             */
+  --brand-soft:    #F2F1EC;   /* subtle brand background            */
+  --brand-ring:    rgba(42, 42, 46, .14);
+
+  /* ── Brand gradient (used on hero, brand mark, primary CTA) ───── */
+  --grad-brand:      linear-gradient(135deg, #2A2A2E 0%, #3F3F46 55%, #52525B 100%);
+  --grad-brand-soft: linear-gradient(135deg, #F2F1EC 0%, #EBE7DF 100%);
+  --grad-hero:       linear-gradient(180deg, #FDFCFA 0%, #F5F3EE 60%, #EBE8E2 100%);
+
+  /* ── Semantic ─────────────────────────────────────────────────── */
+  --danger:        #B91C1C;
+  --danger-soft:   #FEF2F2;
+  --danger-line:   #FECACA;
+  --warn-bg:       #FFF9E6;
+  --warn-bd:       #F2D98A;
+  --warn-ink:      #7A5B0F;
+  --ok:            #15803D;
+  --ok-bg:         #ECFDF5;
+  --ok-bd:         #A7F3D0;
+
+  /* ── Radius ───────────────────────────────────────────────────── */
+  --r-xs:  4px;
+  --r-sm:  8px;
+  --r:     12px;
+  --r-lg:  16px;
+  --r-pill: 999px;
+
+  /* ── Spacing (4-based scale) ──────────────────────────────────── */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  20px;
+  --s-6:  24px;
+  --s-8:  32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-20: 80px;
+
+  /* ── Typography ───────────────────────────────────────────────── */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+               Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --fs-xs:  11.5px;
+  --fs-sm:  12.5px;
+  --fs:     13.5px;
+  --fs-md:  14.5px;
+  --fs-lg:  16px;
+  --fs-xl:  18px;
+  --fs-2xl: 22px;
+  --fs-3xl: 28px;
+  --fs-4xl: 36px;
+  --fs-5xl: 48px;
+
+  --lh-tight:  1.2;
+  --lh-snug:   1.4;
+  --lh:        1.55;
+  --lh-loose:  1.7;
+
+  --tracking-tight: -0.02em;
+  --tracking:       -0.01em;
+  --tracking-wide:   0.06em;
+  --tracking-wider:  0.10em;
+
+  /* ── Shadows ──────────────────────────────────────────────────── */
+  --sh-1: 0 1px 2px rgba(20, 20, 25, .05);
+  --sh-2: 0 4px 16px rgba(20, 20, 25, .06), 0 1px 3px rgba(20, 20, 25, .05);
+  --sh-3: 0 12px 32px rgba(20, 20, 25, .10), 0 2px 6px rgba(20, 20, 25, .06);
+  --sh-focus: 0 0 0 3px var(--brand-ring);
+
+  /* ── Motion ───────────────────────────────────────────────────── */
+  --ease:      cubic-bezier(.4, 0, .2, 1);
+  --ease-out:  cubic-bezier(.16, 1, .3, 1);
+  --dur-fast:  .12s;
+  --dur:       .18s;
+  --dur-slow:  .26s;
+
+  /* ── Layout ───────────────────────────────────────────────────── */
+  --topbar-h:          56px;
+  --side-w:            232px;
+  --side-w-collapsed:  64px;
+  --content-max:       1200px;
+
+  /* ── Z-index scale ────────────────────────────────────────────── */
+  --z-base:     0;
+  --z-sticky:   10;
+  --z-dropdown: 40;
+  --z-scrim:    100;
+  --z-modal:    150;
+  --z-toast:    200;
+
+  color-scheme: light;
+}
+
+/* ============================================================================
+   Dark theme — inverted pearl/charcoal
+   ============================================================================ */
+[data-theme="dark"] {
+  --bg:            #16181C;
+  --bg-sunk:       #121418;
+  --panel:         #1E2025;
+  --panel-soft:    #1A1C21;
+  --panel-hover:   #26292F;
+
+  --ink:           #F0EFEB;
+  --ink-soft:      #D4D4D8;
+  --muted:         #9CA0AA;
+  --muted-soft:    #71717A;
+
+  --line:          #2C2F36;
+  --line-soft:     #24272D;
+  --line-strong:   #3A3E46;
+
+  --brand:         #F0EFEB;
+  --brand-ink:     #16181C;
+  --brand-soft:    #26292F;
+  --brand-ring:    rgba(240, 239, 235, .18);
+
+  --grad-brand:      linear-gradient(135deg, #F0EFEB 0%, #D4D4D8 55%, #A1A1AA 100%);
+  --grad-brand-soft: linear-gradient(135deg, #26292F 0%, #1E2025 100%);
+  --grad-hero:       linear-gradient(180deg, #1E2025 0%, #191B20 60%, #141519 100%);
+
+  --danger:        #F87171;
+  --danger-soft:   #2A1818;
+  --danger-line:   #4A2222;
+  --warn-bg:       #2A2418;
+  --warn-bd:       #4A3E22;
+  --warn-ink:      #F2D98A;
+  --ok:            #4ADE80;
+  --ok-bg:         #14231A;
+  --ok-bd:         #1E4A2E;
+
+  --sh-1: 0 1px 2px rgba(0, 0, 0, .30);
+  --sh-2: 0 4px 16px rgba(0, 0, 0, .38);
+  --sh-3: 0 12px 32px rgba(0, 0, 0, .50);
+
+  color-scheme: dark;
+}
+
+/* ============================================================================
+   Reset & base
+   ============================================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs);
+  line-height: var(--lh);
+  background: var(--bg);
+  color: var(--ink-soft);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: background-color var(--dur) var(--ease),
+              color var(--dur) var(--ease);
+}
+
+/* Lock scrolling when a modal or mobile drawer is open */
+body.no-scroll,
+body.modal-open { overflow: hidden; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 var(--s-3);
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-tight);
+}
+
+h1 { font-size: var(--fs-4xl); font-weight: 800; }
+h2 { font-size: var(--fs-3xl); font-weight: 800; }
+h3 { font-size: var(--fs-xl); }
+h4 { font-size: var(--fs-lg); }
+
+p {
+  margin: 0 0 var(--s-3);
+  color: var(--ink-soft);
+  line-height: var(--lh);
+}
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease);
+}
+a:hover { color: var(--brand); }
+
+button {
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+input, select, textarea {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 0;
+}
+
+img, svg { max-width: 100%; display: block; }
+
+[hidden] { display: none !important; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: var(--s-6) 0;
+}
+
+/* Selection & focus */
+::selection {
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+:focus { outline: none; }
+:focus-visible {
+  outline: none;
+  box-shadow: var(--sh-focus);
+  border-radius: var(--r-sm);
+}

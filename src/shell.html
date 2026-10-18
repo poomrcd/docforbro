@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>DocForBro — Need a business template? I got you, bro.</title>
+<meta name="description" content="DocForBro pairs a freelance rate calculator and margin tracker with 19 client-ready business templates — proposals, invoices, NDAs, contracts. Free to use.">
+<link rel="canonical" href="https://docforbro.com/">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232A2A2E'/%3E%3Ctext x='16' y='22' font-family='system-ui,-apple-system,sans-serif' font-size='14' font-weight='800' text-anchor='middle' fill='%23FAF9F5' letter-spacing='-0.5'%3Edb%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%232A2A2E'/%3E%3Ctext x='90' y='120' font-family='system-ui,-apple-system,sans-serif' font-size='80' font-weight='800' text-anchor='middle' fill='%23FAF9F5' letter-spacing='-2'%3Edb%3C/text%3E%3C/svg%3E">
+
+<script>
+  try {
+    var t = localStorage.getItem('docforbro:theme');
+    if (t === 'dark') document.documentElement.dataset.theme = 'dark';
+  } catch (e) {}
+</script>
+
+<style>
+{{CSS}}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════
+     LANDING
+     ══════════════════════════════════════════════════════════════ -->
+<section class="view" id="view-landing" hidden>
+  <header class="landing-head">
+    <a class="brand" href="#" data-nav="landing" aria-label="DocForBro home">
+      <span class="brand-mark">db</span>
+      <span class="brand-name">DocForBro</span>
+    </a>
+    <nav class="landing-nav" aria-label="Primary">
+      <a href="#how"      data-scroll="how">How it works</a>
+      <a href="#features" data-scroll="features">Features</a>
+      <a href="https://github.com/your-username/docforbro" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px;">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"></path>
+        </svg>
+        GitHub
+      </a>
+      <button class="btn primary sm" data-nav="auth">Sign in</button>
+    </nav>
+  </header>
+
+  <main class="landing-main">
+    <div class="landing-hero">
+      <span class="eyebrow">Free · No card · No nonsense</span>
+      <h1 class="hero-title">
+        Need a business template?<br>
+        <em>I got you, bro.</em>
+      </h1>
+      <p class="hero-lead">
+        DocForBro pairs a freelance rate calculator and margin tracker with
+        nineteen client-ready business templates — so you can figure out what
+        to charge, then send it out looking sharp.
+      </p>
+      <div class="hero-actions">
+        <button class="btn primary lg" data-nav="auth">Get started — free</button>
+        <a class="btn ghost lg" href="#how" data-scroll="how">See how it works</a>
+      </div>
+      <p class="hero-note">Free forever · Sign in with email or Google</p>
+    </div>
+
+    <section class="landing-split" id="how">
+      <div class="split-col">
+        <span class="col-eyebrow">Tools</span>
+        <h2>Figure out what to charge.</h2>
+        <p>
+          A rate calculator that accounts for taxes, business expenses,
+          admin time and revision cycles — plus a margin tracker that
+          shows you which projects actually made money.
+        </p>
+      </div>
+      <div class="split-col">
+        <span class="col-eyebrow">Templates</span>
+        <h2>Put it in writing.</h2>
+        <p>
+          Nineteen professional templates — proposals, invoices, contracts,
+          onboarding forms, handovers — branded with your logo and exported
+          as clean A4 PDFs.
+        </p>
+      </div>
+    </section>
+
+    <section class="landing-features" id="features">
+      <div class="feature-grid">
+        <article class="feature-card"><h3>Rate Calculator</h3><p>Your true hourly rate — with taxes, expenses, admin time and revisions baked in.</p></article>
+        <article class="feature-card"><h3>Margin Engine</h3><p>Track quoted vs. actual hours, project by project. See which work actually pays.</p></article>
+        <article class="feature-card"><h3>19 Business Templates</h3><p>Proposals, invoices, NDAs, SOWs, welcome guides, handovers — all editable, all free.</p></article>
+        <article class="feature-card"><h3>Branded PDFs</h3><p>Your logo, your accent colour, your font. One click to a client-ready export.</p></article>
+        <article class="feature-card"><h3>Cloud Backup</h3><p>Sign in and your drafts, profiles and projects follow you across devices.</p></article>
+        <article class="feature-card"><h3>Free Forever</h3><p>No credit card, no usage caps. Supported by a single non-intrusive ad slot.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="landing-foot">
+    <span>© <span id="landingYear">2026</span> DocForBro</span>
+    <nav>
+      <a href="https://github.com/your-username/docforbro" target="_blank" rel="noopener">GitHub</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/cookies.html">Cookies</a>
+    </nav>
+  </footer>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     AUTH
+     ══════════════════════════════════════════════════════════════ -->
+<section class="view" id="view-auth" hidden>
+  <div class="auth-shell">
+    <a class="brand brand-center" data-nav="landing" aria-label="Back to home">
+      <span class="brand-mark">db</span>
+      <span class="brand-name">DocForBro</span>
+    </a>
+
+    <div class="auth-card">
+      <header class="auth-head">
+        <h1 id="authTitle">Welcome back</h1>
+        <p  id="authSub">Sign in to continue.</p>
+      </header>
+
+      <form id="authForm" novalidate>
+        <div class="auth-field">
+          <label for="authEmail">Email</label>
+          <input type="email" id="authEmail" autocomplete="email" required>
+        </div>
+
+        <div class="auth-field" id="authPasswordField">
+          <label for="authPassword">Password</label>
+          <input type="password" id="authPassword" autocomplete="current-password" required minlength="8">
+        </div>
+
+        <div class="auth-field" id="authConfirmField" hidden>
+          <label for="authConfirm">Confirm password</label>
+          <input type="password" id="authConfirm" autocomplete="new-password" minlength="8">
+        </div>
+
+        <p class="auth-error" id="authError" hidden></p>
+
+        <button type="submit" class="btn primary lg full" id="authSubmit">Sign in</button>
+      </form>
+
+      <div class="auth-divider"><span>or</span></div>
+
+      <button type="button" class="btn google lg full" id="authGoogle">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.76h3.55c2.08-1.92 3.29-4.74 3.29-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.55-2.76c-.98.66-2.24 1.06-3.73 1.06-2.87 0-5.3-1.94-6.17-4.54H2.29v2.85A11 11 0 0012 23z"/>
+          <path fill="#FBBC05" d="M5.83 14.1a6.6 6.6 0 010-4.2V7.05H2.29a11 11 0 000 9.9l3.54-2.85z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.29 7.05l3.54 2.85C6.7 7.3 9.13 5.38 12 5.38z"/>
+        </svg>
+        Continue with Google
+      </button>
+
+      <p class="auth-foot">
+        <span id="authToggleText">New to DocForBro?</span>
+        <button type="button" class="link" id="authToggle">Create an account</button>
+      </p>
+
+      <p class="auth-foot small">
+        <button type="button" class="link" id="authForgot">Forgot password?</button>
+      </p>
+    </div>
+
+    <p class="auth-legal">
+      By continuing you agree to our
+      <a href="/terms.html">Terms</a> and
+      <a href="/privacy.html">Privacy Policy</a>.
+      <br><br>
+      <a href="https://github.com/your-username/docforbro" target="_blank" rel="noopener" style="color: var(--muted-soft); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"></path>
+        </svg>
+        View on GitHub
+      </a>
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     APP SHELL
+     ══════════════════════════════════════════════════════════════ -->
+<div class="app" id="app" data-view="gallery" data-side="expanded" hidden>
+
+  <!-- ── Sidebar ─────────────────────────────────────────────── -->
+  <aside class="sidebar" id="sidebar" aria-label="Primary">
+    <div class="side-head">
+      <a class="side-brand" data-nav="gallery">
+        <span class="brand-mark sm">db</span>
+        <span class="wordmark">DocForBro</span>
+      </a>
+    </div>
+
+    <!-- ── Create ──────────────────────────────────────────────── -->
+    <div class="side-label">Create</div>
+    <nav class="side-nav">
+      <button class="side-item active" data-nav="gallery">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+            <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+            <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+          </svg>
+        </span>
+        <span class="txt">Gallery</span>
+      </button>
+      <button class="side-item" data-nav="workspace" hidden id="navEditor">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+          </svg>
+        </span>
+        <span class="txt">Editor</span>
+      </button>
+      <button class="side-item" data-nav="pages">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <line x1="10" y1="9" x2="8" y2="9"/>
+          </svg>
+        </span>
+        <span class="txt">Pages</span>
+        <span class="badge" id="navBadgePages" hidden>0</span>
+      </button>
+      <button class="side-item" data-nav="notepad">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="9" y1="13" x2="15" y2="13"/>
+            <line x1="9" y1="17" x2="15" y2="17"/>
+          </svg>
+        </span>
+        <span class="txt">Notepad</span>
+        <span class="badge" id="navBadgeNotes" hidden>0</span>
+      </button>
+    </nav>
+
+    <!-- ── Tools ───────────────────────────────────────────────── -->
+    <div class="side-label">Tools</div>
+    <nav class="side-nav">
+      <button class="side-item" data-nav="rate">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="16" rx="2"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+            <line x1="9" y1="14" x2="9" y2="18"/>
+            <line x1="15" y1="14" x2="15" y2="18"/>
+          </svg>
+        </span>
+        <span class="txt">Rate Calculator</span>
+      </button>
+      <button class="side-item" data-nav="margin">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 17 9 11 13 15 21 7"/>
+            <polyline points="14 7 21 7 21 14"/>
+          </svg>
+        </span>
+        <span class="txt">Margin Engine</span>
+      </button>
+    </nav>
+
+    <!-- ── Contacts ────────────────────────────────────────────── -->
+    <div class="side-label">Contacts</div>
+    <nav class="side-nav">
+      <button class="side-item" data-nav="contacts">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </span>
+        <span class="txt">All Contacts</span>
+        <span class="badge" id="navBadgeContacts" hidden>0</span>
+      </button>
+    </nav>
+
+    <!-- ── Library ─────────────────────────────────────────────── -->
+    <div class="side-label">Library</div>
+    <nav class="side-nav">
+      <button class="side-item" data-nav="drive">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/>
+          </svg>
+        </span>
+        <span class="txt">Drive</span>
+        <span class="badge" id="navBadgeDrive" hidden>0</span>
+      </button>
+      <button class="side-item" data-nav="trash">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"/>
+            <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/>
+          </svg>
+        </span>
+        <span class="txt">Trash</span>
+        <span class="badge" id="navBadgeTrash" hidden>0</span>
+      </button>
+    </nav>
+
+    <div class="side-foot">
+      <button class="side-item" data-nav="settings">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008.6 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 8.6a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+          </svg>
+        </span>
+        <span class="txt">Settings</span>
+      </button>
+
+      <div class="side-user" id="sideUser"></div>
+    </div>
+  </aside>
+
+  <!-- ── Topbar ──────────────────────────────────────────────── -->
+  <header class="topbar">
+    <button class="icon-btn side-toggle" id="btnSideToggle" title="Toggle sidebar" aria-label="Toggle sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <line x1="9" y1="3" x2="9" y2="21"/>
+      </svg>
+    </button>
+
+    <div class="search" role="search">
+      <svg class="s-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="search" id="globalSearch" placeholder="Search templates, drafts, exports…" autocomplete="off" spellcheck="false">
+      <span class="s-kbd" aria-hidden="true">⌘K</span>
+    </div>
+
+    <div class="search-results" id="searchResults" hidden></div>
+
+    <div class="top-right" id="topActions">
+      <span class="doc-chip" id="docChip" hidden></span>
+      <span class="draft-pill" id="draftPill" hidden>
+        <span class="dot"></span><span id="draftPillLabel">Draft</span>
+      </span>
+
+      <button class="btn ghost sm" id="btnBack" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12"/>
+          <polyline points="12 19 5 12 12 5"/>
+        </svg>
+        <span class="lbl-lg">Library</span>
+      </button>
+
+      <button class="btn sm" id="btnSaveDraft" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
+          <polyline points="17 21 17 13 7 13 7 21"/>
+        </svg>
+        <span class="lbl-lg">Save Draft</span><span class="lbl-sm">Save</span>
+      </button>
+
+      <button class="btn primary sm" id="btnExport" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span class="lbl-lg">Export PDF</span><span class="lbl-sm">Export</span>
+      </button>
+
+      <button class="theme-toggle" id="btnTheme" title="Toggle theme" aria-label="Toggle theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+        </svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/>
+          <line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/>
+          <line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Main ────────────────────────────────────────────────── -->
+  <main class="main" id="main">
+    <section class="main-view active" data-view="gallery"   id="view-gallery"></section>
+    <section class="main-view"        data-view="workspace" id="view-workspace" hidden></section>
+    <section class="main-view"        data-view="contacts"  id="view-contacts"  hidden></section>
+    <section class="main-view"        data-view="pages"     id="view-pages"     hidden></section>
+    <section class="main-view"        data-view="notepad"   id="view-notepad"   hidden></section>
+    <section class="main-view"        data-view="rate"      id="view-rate"      hidden></section>
+    <section class="main-view"        data-view="margin"    id="view-margin"    hidden></section>
+    <section class="main-view"        data-view="drive"     id="view-drive"     hidden></section>
+    <section class="main-view"        data-view="trash"     id="view-trash"     hidden></section>
+    <section class="main-view"        data-view="settings"  id="view-settings"  hidden></section>
+  </main>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     Overlays
+     ══════════════════════════════════════════════════════════════ -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="modalRoot"></div>
+<div id="printRoot"></div>
+
+<script type="module">
+{{JS}}
+</script>
+
+</body>
+</html>

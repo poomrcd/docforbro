@@ -1,0 +1,308 @@
+/* ============================================================================
+   templates.css — personal template UI + Buy Me a Coffee (custom)
+   ============================================================================ */
+
+/* ── Card menu button on user template cards ───────────────────── */
+.tcard { position: relative; }
+.tcard-menu-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.12s, background 0.12s, color 0.12s, border-color 0.12s;
+}
+.tcard:hover .tcard-menu-btn { opacity: 1; }
+.tcard-menu-btn:hover {
+  background: var(--panel-hover);
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+.tcard-menu-btn svg { width: 14px; height: 14px; }
+
+/* ── Yours badge ────────────────────────────────────────────────── */
+.user-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+  padding: 3px 8px;
+  background: var(--brand);
+  color: var(--brand-ink);
+  border-radius: var(--r-pill);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Card dropdown menu ────────────────────────────────────────── */
+.card-menu {
+  position: fixed;
+  z-index: 100;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  box-shadow: var(--sh-3);
+  padding: 4px;
+  min-width: 168px;
+  animation: menuIn 0.1s ease;
+}
+@keyframes menuIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card-menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.1s, color 0.1s;
+}
+.card-menu button:hover {
+  background: var(--panel-hover);
+  color: var(--ink);
+}
+.card-menu button.danger { color: var(--danger); }
+.card-menu button.danger:hover { background: var(--danger-soft); }
+.card-menu button svg { flex-shrink: 0; opacity: 0.7; }
+.card-menu .menu-divider {
+  height: 1px;
+  background: var(--line-soft);
+  margin: 4px 6px;
+}
+
+/* ── Edit mode banner ──────────────────────────────────────────── */
+.edit-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--brand-soft);
+  border-bottom: 1px solid var(--line);
+  font-size: 12.5px;
+  color: var(--ink);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.edit-banner .badge {
+  padding: 2px 8px;
+  background: var(--brand);
+  color: var(--brand-ink);
+  border-radius: var(--r-pill);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.edit-banner .edit-name {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ============================================================================
+   Buy Me a Coffee — custom floating pill (matches "Feed My Cat" design)
+   ============================================================================ */
+.bmc-float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 22px 6px 6px;
+  height: 56px;
+  background: #1C1C20;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 999px;
+  text-decoration: none;
+  color: #FFFFFF;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.18);
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0;
+  animation: bmcIn 0.35s ease 0.6s forwards;
+}
+@keyframes bmcIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.bmc-float:hover {
+  transform: translateY(-2px);
+  border-color: rgba(77, 212, 200, 0.4);
+  color: #FFFFFF;
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.42),
+    0 0 22px rgba(77, 212, 200, 0.18);
+}
+.bmc-float:active {
+  transform: translateY(0);
+}
+
+/* Avatar with the cyan glow ring */
+.bmc-avatar {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #2A2A2E;
+  box-shadow:
+    0 0 0 2px #4DD4C8,
+    0 0 0 3px rgba(77, 212, 200, 0.18),
+    0 0 22px 4px rgba(77, 212, 200, 0.55);
+  transition: box-shadow 0.2s ease;
+}
+.bmc-float:hover .bmc-avatar {
+  box-shadow:
+    0 0 0 2px #4DD4C8,
+    0 0 0 3px rgba(77, 212, 200, 0.28),
+    0 0 28px 6px rgba(77, 212, 200, 0.7);
+}
+.bmc-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Fallback if the image fails to load */
+.bmc-avatar::before {
+  content: '🐱';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  color: #FFFFFF;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.bmc-label {
+  white-space: nowrap;
+  padding-right: 4px;
+}
+
+/* Responsive: on small screens, hide text and show avatar only */
+@media (max-width: 640px) {
+  .bmc-float {
+    padding: 6px;
+    gap: 0;
+    height: 52px;
+  }
+  .bmc-label { display: none; }
+  .bmc-avatar { width: 40px; height: 40px; }
+}
+
+/* ── Support card in Settings (matching style) ─────────────────── */
+.support-card {
+  background: linear-gradient(135deg, #1C1C20 0%, #26262B 100%);
+  color: #F0EFEB;
+  border-radius: var(--r);
+  padding: 22px 20px;
+  text-align: center;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.support-card h3 {
+  color: #F0EFEB;
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 800;
+}
+.support-card p {
+  color: rgba(240, 239, 235, 0.72);
+  font-size: 12.5px;
+  margin: 0 0 16px;
+  line-height: 1.55;
+}
+
+/* Mini version of the floating pill, reusable inside cards */
+.bmc-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 18px 5px 5px;
+  height: 46px;
+  background: #1C1C20;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 999px;
+  text-decoration: none;
+  color: #FFFFFF;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  transition: transform 0.15s ease, border-color 0.2s ease;
+}
+.bmc-inline:hover {
+  transform: translateY(-1px);
+  border-color: rgba(77, 212, 200, 0.4);
+  color: #FFFFFF;
+}
+.bmc-inline .bmc-avatar {
+  width: 36px;
+  height: 36px;
+  box-shadow:
+    0 0 0 2px #4DD4C8,
+    0 0 14px 2px rgba(77, 212, 200, 0.5);
+}
+
+/* Defensive — BMC pills always keep white text on hover */
+.bmc-float,
+.bmc-float:hover,
+.bmc-float:active,
+.bmc-float:visited,
+.bmc-inline,
+.bmc-inline:hover,
+.bmc-inline:active,
+.bmc-inline:visited {
+  color: #FFFFFF;
+}
+.bmc-label { color: inherit; }
+
+/* BMC pill — ensure white text stays white on hover in every theme */
+.bmc-float,
+.bmc-float:hover,
+.bmc-float:active,
+.bmc-float:visited,
+.bmc-inline,
+.bmc-inline:hover,
+.bmc-inline:active,
+.bmc-inline:visited {
+  color: #FFFFFF;
+}
+.bmc-label { color: inherit; }
+
+[data-theme="dark"] .bmc-float,
+[data-theme="dark"] .bmc-inline {
+  border-color: rgba(255, 255, 255, 0.14);
+}
