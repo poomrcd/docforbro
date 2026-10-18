@@ -1,5 +1,10 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": ".",
-  "framework": null
+  "framework": null,
+  "rewrites": [
+    { "source": "/privacy.html", "destination": "/public/privacy.html" },
+    { "source": "/terms.html", "destination": "/public/terms.html" },
+    { "source": "/cookies.html", "destination": "/public/cookies.html" }
+  ]
 }
