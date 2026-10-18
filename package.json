@@ -1,0 +1,11 @@
+{
+  "name": "docforbro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DocForBro — Need a business template? I got you, bro.",
+  "scripts": {
+    "build": "node build.js",
+    "watch": "node build.js --watch"
+  },
+  "engines": { "node": ">=18" }
+}
