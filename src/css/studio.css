@@ -260,6 +260,11 @@
   background: var(--panel);
 }
 
+/* Fix spacing: remove bottom margin from the last row inside a card */
+.card > .frow:last-child {
+  margin-bottom: 0;
+}
+
 /* Swatches */
 .swatches { display: flex; gap: var(--s-2); flex-wrap: wrap; margin-bottom: var(--s-3); }
 .sw {
@@ -509,6 +514,8 @@
 .doc-page p:last-child { margin-bottom: 0; }
 .doc-page ul { margin: 0 0 5px; padding-left: 16px; }
 .doc-page ul:last-child { margin-bottom: 0; }
+.doc-page ol { margin: 0 0 5px; padding-left: 20px; }
+.doc-page ol:last-child { margin-bottom: 0; }
 .doc-page li { margin-bottom: 2px; }
 
 .doc-notice {
