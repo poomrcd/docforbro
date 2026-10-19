@@ -1,6 +1,6 @@
 /* ============================================================================
    05-studio.js — Templates library, gallery, editor shell, preview
-   v8 — Fixes text line spacing (soft breaks vs paragraphs) and numbered lists.
+   v9 — Fixes template button by safely scoping the dirty flag.
    ============================================================================ */
 
 /* ============================================================================
@@ -626,6 +626,9 @@ let studio = null;
 let studioZoom = 1;
 let studioFit = true;
 let studioFilter = 'all';
+
+// Ensure isStudioDirty is defined even if 99-boot.js is cached or fails to load
+var isStudioDirty = false;
 
 function docMoney(n) { return money(n, studio?.brand?.currency || 'USD'); }
 
