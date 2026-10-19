@@ -1,13 +1,11 @@
 /* ============================================================================
    99-boot.js — DocForBro boot & router
-   v13 — Adds global safe navigation with unsaved changes interception.
+   v14 — Exposes dirty flags to window.docforbro for easier QA.
    ============================================================================ */
 
 const PUBLIC_VIEWS  = ['landing', 'auth'];
 const PRIVATE_VIEWS = ['gallery', 'workspace', 'contacts', 'pages', 'notepad', 'rate', 'margin', 'drive', 'trash', 'settings'];
 
-// Global dirty flags for unsaved changes tracking.
-// Using 'var' here so they are hoisted and safely accessible by 05-studio.js and 06-tools.js
 var isStudioDirty = false;
 var isMarginDirty = false;
 
@@ -35,7 +33,6 @@ function showView(name) {
     auth.style.display = isAuthView ? '' : 'none';
   }
   
-  // Bypass the `.app { display: block !important; }` CSS rule
   if (app) {
     app.hidden = (isLandingView || isAuthView);
     if (isLandingView || isAuthView) {
@@ -90,7 +87,7 @@ function showView(name) {
 function safeNavigate(targetView) {
   var currentView = document.querySelector('.main-view.active')?.dataset.view;
 
-  if (currentView === 'workspace' && isStudioDirty) {
+  if (currentView === 'workspace' && window.docforbro.isStudioDirty) {
     confirmDialog({
       title: 'Unsaved Changes',
       message: 'You have unsaved changes in your document. Are you sure you want to leave without saving?',
@@ -99,14 +96,14 @@ function safeNavigate(targetView) {
       danger: true
     }).then(function (ok) {
       if (ok) {
-        isStudioDirty = false; // Clear flag so it doesn't double-prompt
+        window.docforbro.isStudioDirty = false; 
         showView(targetView);
       }
     });
     return;
   }
 
-  if (currentView === 'margin' && isMarginDirty) {
+  if (currentView === 'margin' && window.docforbro.isMarginDirty) {
     confirmDialog({
       title: 'Unsaved Changes',
       message: 'You have an unsaved project in the Margin Engine. Are you sure you want to leave?',
@@ -115,14 +112,13 @@ function safeNavigate(targetView) {
       danger: true
     }).then(function (ok) {
       if (ok) {
-        isMarginDirty = false; // Clear flag so it doesn't double-prompt
+        window.docforbro.isMarginDirty = false;
         showView(targetView);
       }
     });
     return;
   }
 
-  // No unsaved changes, navigate normally
   showView(targetView);
 }
 
@@ -225,7 +221,7 @@ function boot() {
     if (nav) {
       e.preventDefault();
       if (typeof clearBreadcrumb === 'function') clearBreadcrumb();
-      safeNavigate(nav.dataset.nav); // Use safeNavigate instead of showView
+      safeNavigate(nav.dataset.nav);
       return;
     }
     var scr = e.target.closest('[data-scroll]');
@@ -262,6 +258,13 @@ window.docforbro = {
   Store: Store,
   showView: showView,
   safeNavigate: safeNavigate,
+  
+  // Expose dirty state setters/getters for QA
+  get isStudioDirty() { return isStudioDirty; },
+  set isStudioDirty(v) { isStudioDirty = v; },
+  get isMarginDirty() { return isMarginDirty; },
+  set isMarginDirty(v) { isMarginDirty = v; },
+
   openTemplate: function (t) { return openTemplate(t); },
   TEMPLATES: TEMPLATES,
   get studio() { return studio; },
@@ -283,7 +286,6 @@ window.docforbro = {
   getCachedUserTemplates: function () { return getCachedUserTemplates ? getCachedUserTemplates() : []; },
   getUserTemplateById:    function (id) { return getUserTemplateById ? getUserTemplateById(id) : null; },
   getCachedContacts:      function () { return getCachedContacts ? getCachedContacts() : [] },
-  /* ── Cross-links + breadcrumb helpers (Drop 11A) ────────────────── */
   openNoteById:    function (id) { return typeof openNoteById === 'function' ? openNoteById(id) : null; },
   openPageById:    function (id) { return typeof openPageById === 'function' ? openPageById(id) : null; },
   setBreadcrumb:   function (label, nav, fn) { return typeof setBreadcrumb === 'function' ? setBreadcrumb(label, nav, fn) : null; },
