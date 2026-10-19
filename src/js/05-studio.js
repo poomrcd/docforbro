@@ -1,6 +1,6 @@
 /* ============================================================================
    05-studio.js — Templates library, gallery, editor shell, preview
-   v7 — Adds dirty state tracking and safe navigation for unsaved changes.
+   v8 — Fixes text line spacing (soft breaks vs paragraphs) and numbered lists.
    ============================================================================ */
 
 /* ============================================================================
@@ -637,7 +637,7 @@ function buildStudioFromTemplate(t) {
     t.defaults || {},
   );
   
-  isStudioDirty = false; // Reset dirty flag on new template
+  isStudioDirty = false;
 
   return {
     templateId: t.id,
@@ -957,7 +957,6 @@ function renderBrandPanel() {
     el.addEventListener('change', onEditorInput);
   });
 
-  // Populate contacts async
   if (typeof loadContacts === 'function') {
     loadContacts().then(() => {
       const sel = document.getElementById('editor_contactId');
@@ -976,7 +975,7 @@ function renderBrandPanel() {
     const reader = new FileReader();
     reader.onload = ev => {
       studio.brand.logo = ev.target.result;
-      isStudioDirty = true; // Mark dirty
+      isStudioDirty = true;
       syncBrandInputs();
       renderPreview();
     };
@@ -985,7 +984,7 @@ function renderBrandPanel() {
   });
   $('#btnLogoRemove')?.addEventListener('click', () => {
     studio.brand.logo = null;
-    isStudioDirty = true; // Mark dirty
+    isStudioDirty = true;
     syncBrandInputs();
     renderPreview();
   });
@@ -1091,7 +1090,7 @@ function renderDesignPanel() {
     const sw = e.target.closest('.sw');
     if (!sw) return;
     studio.brand.accent = sw.dataset.accent;
-    isStudioDirty = true; // Mark dirty
+    isStudioDirty = true;
     syncDesignInputs();
     renderPreview();
   });
@@ -1120,7 +1119,7 @@ function onEditorInput(e) {
   if (!el) return;
   if (el.closest('#pane-content')) return;
 
-  isStudioDirty = true; // Mark dirty on any brand/design change
+  isStudioDirty = true;
 
   const path = el.dataset.path.split('.');
   const last = path.pop();
@@ -1130,7 +1129,6 @@ function onEditorInput(e) {
   let value = el.value;
   if (el.type === 'range' || el.type === 'number') value = parseFloat(value) || 0;
   
-  // Special case for contactId since it's at the root level
   if (el.dataset.path === 'contactId') {
     studio.contactId = value || null;
     updateLinkedContactBar();
@@ -1166,7 +1164,7 @@ function bindEditorEvents() {
 
   document.getElementById('unlinkContactBtn')?.addEventListener('click', () => {
     studio.contactId = null;
-    isStudioDirty = true; // Mark dirty
+    isStudioDirty = true;
     const sel = document.getElementById('editor_contactId');
     if (sel) sel.value = '';
     updateLinkedContactBar();
@@ -1182,7 +1180,6 @@ function bindEditorEvents() {
   const sigPane = $('#pane-sign');
   if (sigPane) sigPane.addEventListener('click', onSignatureClick);
 
-  // Use safeNavigate instead of showView
   document.querySelector('[data-action="back-to-gallery"]')?.addEventListener('click', () => {
     if (typeof safeNavigate === 'function') {
       safeNavigate('gallery');
@@ -1246,24 +1243,31 @@ function applyDocStyleVars(el) {
 function splitParagraphs(value) {
   const raw = String(value ?? '').trim();
   if (!raw) return [];
-  const lines = raw.split('\n').map(l => l.trim()).filter(Boolean);
-  const out = [];
-  let list = null;
-  for (const line of lines) {
-    if (/^[-*•]\s+/.test(line)) {
-      if (!list) { list = []; out.push(list); }
-      list.push(line.replace(/^[-*•]\s+/, ''));
-    } else {
-      list = null;
-      out.push(line);
+
+  // Split by double newlines for paragraphs
+  const blocks = raw.split(/\n\s*\n/);
+
+  return blocks.map(block => {
+    const lines = block.split('\n').map(l => l.trim()).filter(Boolean);
+    if (!lines.length) return '';
+
+    // Check for bullet list
+    const isBulletList = lines.every(l => /^[-*•]\s+/.test(l));
+    if (isBulletList) {
+      return `<ul>${lines.map(x => `<li>${esc(x.replace(/^[-*•]\s+/, ''))}</li>`).join('')}</ul>`;
     }
-  }
-  return out.map(chunk =>
-    Array.isArray(chunk)
-      ? `<ul>${chunk.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`
-      : `<p>${esc(chunk)}</p>`
-  );
+
+    // Check for numbered list
+    const isNumberList = lines.every(l => /^\d+\.\s+/.test(l));
+    if (isNumberList) {
+      return `<ol>${lines.map(x => `<li>${esc(x.replace(/^\d+\.\s+/, ''))}</li>`).join('')}</ol>`;
+    }
+
+    // Otherwise, treat single newlines as <br> within a <p>
+    return `<p>${lines.map(l => esc(l)).join('<br>')}</p>`;
+  }).join('');
 }
+
 function textHTML(value) {
   const parts = splitParagraphs(value);
   return parts.length ? parts.join('') : '';
