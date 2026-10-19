@@ -1,6 +1,6 @@
 /* ============================================================================
    05-studio.js — Templates library, gallery, editor shell, preview
-   v9 — Fixes template button by safely scoping the dirty flag.
+   v10 — Adds try/catch to openTemplate for debugging and explicit var scoping.
    ============================================================================ */
 
 /* ============================================================================
@@ -627,7 +627,7 @@ let studioZoom = 1;
 let studioFit = true;
 let studioFilter = 'all';
 
-// Ensure isStudioDirty is defined even if 99-boot.js is cached or fails to load
+// Explicit declaration to prevent ReferenceError if 99-boot.js loads late or is cached
 var isStudioDirty = false;
 
 function docMoney(n) { return money(n, studio?.brand?.currency || 'USD'); }
@@ -788,21 +788,26 @@ function renderGallery() {
   });
 
   $('#templateGrid')?.addEventListener('click', e => {
-    const menuBtn = e.target.closest('[data-card-menu]');
-    if (menuBtn) {
-      e.stopPropagation();
-      if (typeof openTemplateCardMenu === 'function') {
-        openTemplateCardMenu(menuBtn, menuBtn.dataset.templateId);
+    try {
+      const menuBtn = e.target.closest('[data-card-menu]');
+      if (menuBtn) {
+        e.stopPropagation();
+        if (typeof openTemplateCardMenu === 'function') {
+          openTemplateCardMenu(menuBtn, menuBtn.dataset.templateId);
+        }
+        return;
       }
-      return;
+      const btn = e.target.closest('[data-template]');
+      if (!btn) return;
+      const id = btn.dataset.template;
+      const userTpl = typeof getUserTemplateById === 'function' ? getUserTemplateById(id) : null;
+      if (userTpl) { openTemplate(userTpl); return; }
+      const t = TEMPLATES.find(x => x.id === id);
+      if (t) openTemplate(t);
+    } catch (err) {
+      console.error('Gallery click error:', err);
+      alert('Error opening template: ' + err.message);
     }
-    const btn = e.target.closest('[data-template]');
-    if (!btn) return;
-    const id = btn.dataset.template;
-    const userTpl = typeof getUserTemplateById === 'function' ? getUserTemplateById(id) : null;
-    if (userTpl) { openTemplate(userTpl); return; }
-    const t = TEMPLATES.find(x => x.id === id);
-    if (t) openTemplate(t);
   });
 }
 
@@ -810,11 +815,16 @@ function renderGallery() {
    7. Open template → editor
    ============================================================================ */
 function openTemplate(t) {
-  studio = buildStudioFromTemplate(t);
-  renderWorkspace();
-  showView('workspace');
-  requestAnimationFrame(fitPreview);
-  if (typeof updateEditModeUI === 'function') updateEditModeUI();
+  try {
+    studio = buildStudioFromTemplate(t);
+    renderWorkspace();
+    showView('workspace');
+    requestAnimationFrame(fitPreview);
+    if (typeof updateEditModeUI === 'function') updateEditModeUI();
+  } catch (err) {
+    console.error('Failed to open template:', err);
+    alert('Could not open template: ' + err.message);
+  }
 }
 
 function renderWorkspace() {
