@@ -1,6 +1,6 @@
 /* ============================================================================
    05-studio.js — Templates library, gallery, editor shell, preview
-   v10 — Adds try/catch to openTemplate for debugging and explicit var scoping.
+   v11 — Fixes splitParagraphs returning a string instead of an array.
    ============================================================================ */
 
 /* ============================================================================
@@ -1278,7 +1278,7 @@ function splitParagraphs(value) {
 
     // Otherwise, treat single newlines as <br> within a <p>
     return `<p>${lines.map(l => esc(l)).join('<br>')}</p>`;
-  }).join('');
+  }); // Removed .join('') here so it returns an array
 }
 
 function textHTML(value) {
