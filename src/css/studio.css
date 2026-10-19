@@ -480,6 +480,14 @@
 .doc-body { flex: 1; display: flex; flex-direction: column; }
 .doc-sec { margin-bottom: var(--secgap); }
 
+/* Fix: Tight spacing for paragraphs within the same text block */
+.doc-sec.tpart {
+  margin-bottom: 0;
+}
+.doc-sec.tpart.last {
+  margin-bottom: var(--secgap);
+}
+
 .sec-title {
   font-size: 1.05em;
   font-weight: 700;
